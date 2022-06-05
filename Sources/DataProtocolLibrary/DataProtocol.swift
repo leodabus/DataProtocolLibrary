@@ -7,6 +7,7 @@
 
 import protocol Foundation.DataProtocol
 import struct Foundation.Data
+import struct Foundation.Date
 import struct CryptoKit.SHA256Digest
 import struct CryptoKit.SHA256
 import struct CryptoKit.SHA384Digest
@@ -28,9 +29,17 @@ extension DataProtocol {
             using: key
         )
     }
+}
 
+extension DataProtocol {
     var string: String? {
         .init(bytes: self, encoding: .utf8)
     }
-}
 
+    func value<N: Numeric>() -> N { .init(self) }
+    var uint64: UInt64 { value() }
+    var timeIntervalSinceReferenceDate: Double {
+        uint64.littleEndian.bitPattern
+    }
+    var date: Date { .init(data: self) }
+}
