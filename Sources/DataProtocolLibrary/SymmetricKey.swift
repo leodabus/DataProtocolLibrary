@@ -5,8 +5,7 @@
 //  Created by Leonardo Dabus on 25/09/21.
 //
 
-import Foundation
-import CryptoKit
+import struct CryptoKit.SymmetricKey
 
 @available(macOS 10.15, *)
 extension SymmetricKey {

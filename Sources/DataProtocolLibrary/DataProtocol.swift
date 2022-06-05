@@ -5,9 +5,17 @@
 //  Created by Leonardo Dabus on 25/09/21.
 //
 
-import Foundation
-import CryptoKit
-
+import protocol Foundation.DataProtocol
+import struct Foundation.Data
+import struct CryptoKit.SHA256Digest
+import struct CryptoKit.SHA256
+import struct CryptoKit.SHA384Digest
+import struct CryptoKit.SHA384
+import struct CryptoKit.SHA512Digest
+import struct CryptoKit.SHA512
+import enum CryptoKit.AES
+import struct CryptoKit.SymmetricKey
+ 
 @available(macOS 10.15, *)
 extension DataProtocol {
     var sha256: SHA256Digest { SHA256.hash(data: self) }

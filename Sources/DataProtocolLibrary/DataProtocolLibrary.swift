@@ -1,5 +1,5 @@
 public struct DataProtocolLibrary {
-    public private(set) var text = "Hello, World!"
+    public private(set) var text = "Author: Leonardo Dabus"
 
     public init() {
     }

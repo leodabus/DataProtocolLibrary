@@ -6,6 +6,6 @@ final class DataProtocolLibraryTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(DataProtocolLibrary().text, "Hello, World!")
+        XCTAssertEqual(DataProtocolLibrary().text, "Author: Leonardo Dabus")
     }
 }
