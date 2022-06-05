@@ -28,5 +28,9 @@ extension DataProtocol {
             using: key
         )
     }
+
+    var string: String? {
+        .init(bytes: self, encoding: .utf8)
+    }
 }
 
