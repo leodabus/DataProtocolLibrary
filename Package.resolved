@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CollectionLibrary",
+        "repositoryURL": "https://github.com/leodabus/CollectionLibrary.git",
+        "state": {
+          "branch": null,
+          "revision": "fd126144f9a47c0f021446e05ea82d1e58803d7b",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -16,6 +16,7 @@ import struct CryptoKit.SHA512Digest
 import struct CryptoKit.SHA512
 import enum CryptoKit.AES
 import struct CryptoKit.SymmetricKey
+import CollectionLibrary
  
 @available(macOS 10.15, *)
 extension DataProtocol {
@@ -31,7 +32,7 @@ extension DataProtocol {
     }
 }
 
-extension DataProtocol {
+public extension DataProtocol {
     var string: String? {
         .init(bytes: self, encoding: .utf8)
     }
@@ -42,4 +43,23 @@ extension DataProtocol {
         uint64.littleEndian.bitPattern
     }
     var date: Date { .init(data: self) }
+}
+
+public extension DataProtocol where Self: RangeReplaceableCollection {
+    init<S: StringProtocol>(_ hexa: S) throws {
+        guard hexa.count.isMultiple(of: 2) else {
+            throw String.DecodingError.oddNumberOfCharacters
+        }
+        self = .init()
+        reserveCapacity(hexa.utf8.count/2)
+        for pair in hexa.unfoldSubSequences(limitedTo: 2) {
+            guard let byte = UInt8(pair, radix: 16) else {
+                for character in pair where !character.isHexDigit {
+                    throw String.DecodingError.invalidHexaCharacter(character)
+                }
+                continue
+            }
+            append(byte)
+        }
+    }
 }
